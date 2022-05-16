@@ -11,6 +11,10 @@ export default function Form({ onSendData }) {
     setValues({ ...values, select: regionCodes[0].code });
   }, []);
 
+  function getItemRegion(num) {
+    return `${regionCodes[num].region}: ${regionCodes[num].code}`;
+  }
+
   function handleSubmit(evt) {
     evt.preventDefault();
     if (!isValid) {
@@ -26,15 +30,9 @@ export default function Form({ onSendData }) {
 
       <fieldset>
         <select name="select" onChange={handleChange}>
-          <option value={regionCodes[0].code}>
-            {regionCodes[0].region}: {regionCodes[0].code}
-          </option>
-          <option value={regionCodes[1].code}>
-            {regionCodes[1].region}: {regionCodes[1].code}
-          </option>
-          <option value={regionCodes[2].code}>
-            {regionCodes[2].region}: {regionCodes[2].code}
-          </option>
+          <option value={regionCodes[0].code}>{getItemRegion(0)}</option>
+          <option value={regionCodes[1].code}>{getItemRegion(1)}</option>
+          <option value={regionCodes[2].code}>{getItemRegion(2)}</option>
         </select>
         <input
           onChange={handleChange}
@@ -49,7 +47,7 @@ export default function Form({ onSendData }) {
         </span>
       </fieldset>
 
-      <input type="submit" value="Отправить" className="button-submit button" />
+      <input type="submit" value="Сохранить" className="button-submit button" />
     </form>
   );
 }
