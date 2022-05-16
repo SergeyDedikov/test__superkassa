@@ -1,9 +1,9 @@
-import "./Section.css"
+import "./Section.css";
 
 export default function Section(props) {
   return (
-    <section className="section" aria-label={props.children.name}>
+    <section className="section" aria-label={props.name}>
       {props.children}
     </section>
-  )
+  );
 }

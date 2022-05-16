@@ -2,10 +2,9 @@ import "./Form.css";
 import { regionCodes } from "../../utils/const";
 import { useState } from "react";
 
-export default function Form() {
+export default function Form({ onSendData }) {
   const [selectedRegion, setSelectedRegion] = useState(regionCodes[0].code);
   const [inputNumber, setInputNumber] = useState("");
-  console.log(selectedRegion, inputNumber);
 
   function handleChangeS(evt) {
     setSelectedRegion(evt.target.value);
@@ -17,7 +16,7 @@ export default function Form() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(`${selectedRegion}${inputNumber}`);
+    onSendData(`${selectedRegion}${inputNumber}`);
   }
 
   return (
@@ -48,7 +47,7 @@ export default function Form() {
         </label>
       </fieldset>
 
-      <input type="submit" value="Отправить" className="button-submit"/>
+      <input type="submit" value="Отправить" className="button-submit" />
     </form>
   );
 }
