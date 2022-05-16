@@ -8,8 +8,9 @@
 }
 
 fieldset {
+  position: relative;
   margin: 0;
-  padding: 10px;
+  padding: 20px 0;
   border: none;
   display: flex;
   align-items: center;
@@ -24,4 +25,13 @@ label {
 
 .button-submit {
   width: 150px;
+  margin: 10px 0;
+}
+
+.form__error {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(100% - 20px);
+  color: rgb(240, 200, 50);
 }

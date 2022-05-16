@@ -1,28 +1,31 @@
 import "./Form.css";
 import { regionCodes } from "../../utils/const";
-import { useState } from "react";
+import { useFormWithValidation } from "../../hooks/form-validation";
+import { useEffect } from "react";
 
 export default function Form({ onSendData }) {
-  const [selectedRegion, setSelectedRegion] = useState(regionCodes[0].code);
-  const [inputNumber, setInputNumber] = useState("");
+  const { values, setValues, handleChange, errors, isValid } =
+    useFormWithValidation();
 
-  function handleChangeS(evt) {
-    setSelectedRegion(evt.target.value);
-  }
-
-  function handleChangeN(evt) {
-    setInputNumber(evt.target.value);
-  }
+  useEffect(() => {
+    setValues({ ...values, select: regionCodes[0].code });
+  }, []);
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    onSendData(`${selectedRegion}${inputNumber}`);
+    if (!isValid) {
+      console.log(errors);
+    } else {
+      onSendData(`${values.select}${values.phone}`);
+    }
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit} noValidate>
+      <label htmlFor="phone">Введите номер телефона:</label>
+
       <fieldset>
-        <select name="select" value={selectedRegion} onChange={handleChangeS}>
+        <select name="select" onChange={handleChange}>
           <option value={regionCodes[0].code}>
             {regionCodes[0].region}: {regionCodes[0].code}
           </option>
@@ -33,21 +36,20 @@ export default function Form({ onSendData }) {
             {regionCodes[2].region}: {regionCodes[2].code}
           </option>
         </select>
-        <label htmlFor="phone">
-          <small>Введите номер телефона: </small>
-          <input
-            onChange={handleChangeN}
-            type="tel"
-            id="phone"
-            name="phone"
-            pattern="[0-9]{3,10}"
-            required
-          />
-          <small>Format: 1234567890</small>
-        </label>
+        <input
+          onChange={handleChange}
+          type="tel"
+          id="phone"
+          name="phone"
+          pattern="[0-9]{3,10}"
+          required
+        />
+        <span className="form__error">
+          <small>{!isValid && errors.phone ? errors.phone : ""}</small>
+        </span>
       </fieldset>
 
-      <input type="submit" value="Отправить" className="button-submit" />
+      <input type="submit" value="Отправить" className="button-submit button" />
     </form>
   );
 }

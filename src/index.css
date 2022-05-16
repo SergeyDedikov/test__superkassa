@@ -20,6 +20,7 @@
 }
 
 .button {
+  color: inherit;
   margin: 0 auto;
   padding: 5px 10px;
   border: 1px solid #eee;
