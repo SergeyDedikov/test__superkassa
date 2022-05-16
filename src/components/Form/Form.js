@@ -29,7 +29,7 @@ export default function Form({ onSendData }) {
       <label htmlFor="phone">Введите номер телефона:</label>
 
       <fieldset>
-        <select name="select" onChange={handleChange}>
+        <select name="select" value={values.select} onChange={handleChange}>
           <option value={regionCodes[0].code}>{getItemRegion(0)}</option>
           <option value={regionCodes[1].code}>{getItemRegion(1)}</option>
           <option value={regionCodes[2].code}>{getItemRegion(2)}</option>
