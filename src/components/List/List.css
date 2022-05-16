@@ -1,0 +1,16 @@
+.list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 150px);
+  gap: 5px;
+}
+
+.item {
+  background: rgb(0, 50, 100);
+  padding: 5px;
+}
+

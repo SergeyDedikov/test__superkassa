@@ -1,8 +1,12 @@
+import "./List.css";
+
 export default function List({ numbersList }) {
   return (
-    <ul>
+    <ul className="list">
       {numbersList.map((number, i) => (
-        <li key={i}>{number}</li>
+        <li className="item" key={i}>
+          {number}
+        </li>
       ))}
     </ul>
   );
