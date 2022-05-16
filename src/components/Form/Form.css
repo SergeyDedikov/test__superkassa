@@ -1,0 +1,27 @@
+.form {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+fieldset {
+  margin: 0;
+  padding: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  display: inline-flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.button-submit {
+  width: 150px;
+}
