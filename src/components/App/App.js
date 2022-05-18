@@ -24,10 +24,8 @@ export default function App() {
   function onSendData(data) {
     api
       .createPhone(data)
-      .then(({ code, number }) => {
-        let newNumber = `${code}${number}`;
-        console.log(newNumber);
-        setNumbersList([newNumber, ...numbersList]);
+      .then((newNumber) => {
+        setNumbersList((state) => [...state, newNumber]);
       })
       .catch((err) => console.log(err));
   }

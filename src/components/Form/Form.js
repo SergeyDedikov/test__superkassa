@@ -1,11 +1,14 @@
+import { useEffect, useRef } from "react";
+
 import "./Form.css";
 import { regionCodes } from "../../utils/const";
 import { useFormWithValidation } from "../../hooks/form-validation";
-import { useEffect } from "react";
 
 export default function Form({ onSendData }) {
-  const { values, setValues, handleChange, errors, isValid } =
+  const { values, setValues, handleChange, errors, isValid, setIsValid } =
     useFormWithValidation();
+
+  const input = useRef(null);
 
   useEffect(() => {
     setValues({ ...values, select: regionCodes[0].code });
@@ -21,6 +24,9 @@ export default function Form({ onSendData }) {
       console.log(errors);
     } else {
       onSendData(values);
+      input.current.value = null;
+      setValues({ ...values, phone: "" });
+      setIsValid(false);
     }
   }
 
@@ -35,6 +41,7 @@ export default function Form({ onSendData }) {
           <option value={regionCodes[2].code}>{getItemRegion(2)}</option>
         </select>
         <input
+          ref={input}
           onChange={handleChange}
           type="tel"
           id="phone"
@@ -47,7 +54,12 @@ export default function Form({ onSendData }) {
         </span>
       </fieldset>
 
-      <input type="submit" value="Сохранить" className="button-submit button" />
+      <input
+        type="submit"
+        value="Сохранить"
+        className="button-submit button"
+        disabled={!isValid}
+      />
     </form>
   );
 }
