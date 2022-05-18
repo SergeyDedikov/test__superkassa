@@ -1,3 +1,5 @@
+const BASE_URL_API = 'http://localhost:3001';
+
 const regionCodes = [
   {
     region: "Россия",
@@ -13,4 +15,4 @@ const regionCodes = [
   },
 ];
 
-export { regionCodes };
+export { regionCodes, BASE_URL_API };
