@@ -37,7 +37,7 @@ class ApiPhones {
     }).then(this._checkResult);
   }
 
-  deleteMovie(id) {
+  deleteAllPhones() {
     return fetch(`${this._url}/phones`, {
       method: "DELETE",
       headers: this._headers,

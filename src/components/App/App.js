@@ -13,7 +13,7 @@ export default function App() {
   // -- Первоначальный рендер
   useEffect(() => {
     api
-      .deleteMovie()
+      .deleteAllPhones()
       .then((res) => {
         setOnLoad(true);
       })
