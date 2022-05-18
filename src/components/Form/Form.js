@@ -20,7 +20,7 @@ export default function Form({ onSendData }) {
     if (!isValid) {
       console.log(errors);
     } else {
-      onSendData(`${values.select}${values.phone}`);
+      onSendData(values);
     }
   }
 

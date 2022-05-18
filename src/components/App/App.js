@@ -20,8 +20,16 @@ export default function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  function onSendData(newNumber) {
-    setNumbersList([newNumber, ...numbersList]);
+  // -- Добавим номер в БД и отрисуем в списке
+  function onSendData(data) {
+    api
+      .createPhone(data)
+      .then(({ code, number }) => {
+        let newNumber = `${code}${number}`;
+        console.log(newNumber);
+        setNumbersList([newNumber, ...numbersList]);
+      })
+      .catch((err) => console.log(err));
   }
 
   return onLoad ? (
