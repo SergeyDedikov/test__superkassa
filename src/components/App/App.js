@@ -30,6 +30,19 @@ export default function App() {
       .catch((err) => console.log(err));
   }
 
+  // -- Получение всех номеров из БД
+  async function getPhones() {
+    api
+      .getPhones()
+      .then((phones) => {
+        if (phones.length > 0) {
+          console.log(phones);
+          setNumbersList((state) => phones);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
+
   return onLoad ? (
     <>
       <Section name="form">
