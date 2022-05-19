@@ -9,16 +9,8 @@ import api from "../../utils/apiPhones";
 export default function App() {
   const [onLoad, setOnLoad] = useState(false);
   const [numbersList, setNumbersList] = useState([]);
-
-  // -- Первоначальный рендер
-  useEffect(() => {
-    api
-      .deleteAllPhones()
-      .then((res) => {
-        setOnLoad(true);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // -- Интервал времени запросов к серверу
+  const [requestTimer, setRequestTimer] = useState(0);
 
   // -- Добавим номер в БД и отрисуем в списке
   function onSendData(data) {
@@ -31,17 +23,31 @@ export default function App() {
   }
 
   // -- Получение всех номеров из БД
-  async function getPhones() {
+  function getPhones() {
     api
       .getPhones()
       .then((phones) => {
         if (phones.length > 0) {
-          console.log(phones);
-          setNumbersList((state) => phones);
+          setNumbersList(phones);
         }
       })
       .catch((err) => console.log(err));
   }
+
+  // -- Первоначальный рендер
+  //    с удалением номеров из базы
+  //    и установкой интервала запросов в 10 сек
+  useEffect(() => {
+    api
+      .deleteAllPhones()
+      .then((res) => {
+        setOnLoad(true);
+      })
+      .catch((err) => console.log(err));
+
+    setRequestTimer(setInterval(getPhones, 10000));
+    return () => clearInterval(requestTimer);
+  }, []);
 
   return onLoad ? (
     <>
