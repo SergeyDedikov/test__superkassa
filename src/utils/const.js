@@ -1,4 +1,4 @@
-const BASE_URL_API = 'http://localhost:3001';
+const BASE_URL_API = "https://api.movies-favorite.nomoredomains.work";
 
 const regionCodes = [
   {
