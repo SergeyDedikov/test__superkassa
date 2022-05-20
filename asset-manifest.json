@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/test__superkassa/static/css/main.4488d547.css",
-    "main.js": "/test__superkassa/static/js/main.5694d2e5.js",
+    "main.js": "/test__superkassa/static/js/main.eb7d81a0.js",
     "static/js/787.4631b1d9.chunk.js": "/test__superkassa/static/js/787.4631b1d9.chunk.js",
     "static/media/Inter-Medium.woff": "/test__superkassa/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Regular.woff": "/test__superkassa/static/media/Inter-Regular.8c206db99195777c6769.woff",
@@ -9,11 +9,11 @@
     "static/media/Inter-Regular.woff2": "/test__superkassa/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
     "index.html": "/test__superkassa/index.html",
     "main.4488d547.css.map": "/test__superkassa/static/css/main.4488d547.css.map",
-    "main.5694d2e5.js.map": "/test__superkassa/static/js/main.5694d2e5.js.map",
+    "main.eb7d81a0.js.map": "/test__superkassa/static/js/main.eb7d81a0.js.map",
     "787.4631b1d9.chunk.js.map": "/test__superkassa/static/js/787.4631b1d9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4488d547.css",
-    "static/js/main.5694d2e5.js"
+    "static/js/main.eb7d81a0.js"
   ]
 }
